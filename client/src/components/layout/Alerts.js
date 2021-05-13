@@ -8,7 +8,7 @@ const Alerts = () => {
   return (
 
       <div className={`alert alert-${alerts.type}`}>
-        <i className='fas fa-info-circle'></i> {alerts.msg}
+        <i className='fas fa-info-circle'></i>  {alerts.msg}
       </div>
     )
 };

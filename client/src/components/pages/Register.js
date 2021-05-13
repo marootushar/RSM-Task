@@ -32,6 +32,15 @@ const Register = (props) => {
 
     const { name, email, password, password2 } = user;
 
+    const getStrength = (password) => {
+        let cnt=0;
+        if (lcc.test(password)) cnt++;
+        if (ucc.test(password)) cnt++;
+        if (num.test(password)) cnt++;
+        if (sc.test(password)) cnt++;
+        return cnt;
+    };
+
     const onChange = (e) =>
         setUser({ ...user, [e.target.name]: e.target.value });
 
@@ -41,16 +50,8 @@ const Register = (props) => {
             setAlert('Please Enter All Fields.', 'danger');
         } else if (ws.test(password))
             setAlert('Password should not contain spaces.', 'danger');
-        else if (
-            !lcc.test(password) ||
-            !ucc.test(password) ||
-            !num.test(password) ||
-            !sc.test(password)
-        )
-            setAlert(
-                'Password must contain a lowercase character, an uppercase character, a number and a special character.',
-                'danger'
-            );
+        else if (getStrength(password) < 3)
+            setAlert('Please choose a strong password.', 'danger');
         else if (password !== password2) {
             setAlert('Passwords Do Not Match.', 'danger');
         } else {

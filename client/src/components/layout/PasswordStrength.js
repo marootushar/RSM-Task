@@ -18,9 +18,9 @@ const PasswordStrength = (props) => {
     };
 
     const getText = () => {
-        if (ws.test(password)) return 'Password should not contain spaces';
+        if (ws.test(password)) return 'Password must not contain spaces.';
         if (password.length < 8)
-            return 'Password should contain atleast 8 characters';
+            return 'Password must contain atleast 8 characters.';
         return null;
     };
 

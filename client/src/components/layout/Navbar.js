@@ -50,7 +50,7 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   title: 'RSM-Task',
-  icon: 'fas fa-id-card-alt',
+  icon: 'fas fa-flask',
 };
 
 export default Navbar;
