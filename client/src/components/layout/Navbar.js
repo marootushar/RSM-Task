@@ -34,7 +34,7 @@ const Navbar = ({ title, icon }) => {
   );
 
   return (
-    <div className='navbar bg-primary'>
+    <div className='navbar'>
       <h1>
         <i className={icon}></i> {title}
       </h1>

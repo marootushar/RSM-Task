@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 import PasswordStrength from '../layout/PasswordStrength';
-import { lcc, ucc, num, sc ,ws} from '../../utils/RegExp';
+import { lcc, ucc, num, sc, ws } from '../../utils/RegExp';
 
 const Register = (props) => {
     const alertContext = useContext(AlertContext);
@@ -41,14 +41,16 @@ const Register = (props) => {
             setAlert('Please Enter All Fields.', 'danger');
         } else if (ws.test(password))
             setAlert('Password should not contain spaces.', 'danger');
-         else if (!lcc.test(password))
-            setAlert('Password must contain a lowercase character.', 'danger');
-        else if (!ucc.test(password))
-            setAlert('Password must contain an uppercase character.', 'danger');
-        else if (!num.test(password))
-            setAlert('Password must contain a number.', 'danger');
-        else if (!sc.test(password))
-            setAlert('Password must contain a special character.', 'danger');
+        else if (
+            !lcc.test(password) ||
+            !ucc.test(password) ||
+            !num.test(password) ||
+            !sc.test(password)
+        )
+            setAlert(
+                'Password must contain a lowercase character, an uppercase character, a number and a special character.',
+                'danger'
+            );
         else if (password !== password2) {
             setAlert('Passwords Do Not Match.', 'danger');
         } else {
@@ -109,10 +111,7 @@ const Register = (props) => {
                     />
                 </div>
                 <PasswordStrength password={password} />
-                <input
-                    type='submit'
-                    value='Register'
-                />
+                <input type='submit' value='Register' />
             </form>
         </div>
     );
