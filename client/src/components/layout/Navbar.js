@@ -49,7 +49,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Contact Keeper',
+  title: 'RSM-Task',
   icon: 'fas fa-id-card-alt',
 };
 
